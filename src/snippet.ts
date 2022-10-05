@@ -15,15 +15,35 @@ const warn = {
   body: ['console.warn'],
   description: 'console.warn',
 }
+
 const err = {
   prefix: 'error!',
   body: ['console.error'],
   description: 'console.error',
 }
+
 const info = {
   prefix: 'info!',
   body: ['console.info'],
   description: 'console.info',
 }
 
-export const snippets = [log, warn, err, info]
+const varDefine = {
+  prefix: 'var!',
+  body: ['var  = '],
+  description: 'define variable',
+}
+
+const constDefine = {
+  prefix: 'const!',
+  body: ['const  = '],
+  description: 'define variable',
+}
+
+const letDefine = {
+  prefix: 'let!',
+  body: ['let  = '],
+  description: 'define variable',
+}
+
+export const snippets = [log, warn, err, info, varDefine, constDefine, letDefine]

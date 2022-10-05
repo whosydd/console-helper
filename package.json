@@ -2,16 +2,25 @@
   "name": "console-helper",
   "displayName": "Console Helper",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.71.0"
   },
   "categories": [
-    "Other"
+    "Snippets"
   ],
+  "author": {
+    "name": "GY",
+    "email": "dev.youngkwok718@gmail.com"
+  },
+  "license": "MIT",
   "activationEvents": [
+    "onLanguage:html",
     "onLanguage:javascript",
-    "onLanguage:typescript"
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:vue"
   ],
   "main": "./dist/extension.js",
   "contributes": {
