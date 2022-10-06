@@ -1,5 +1,5 @@
 {
-  "name": "console-helper",
+  "name": "console-helper-vscode",
   "displayName": "Console Helper",
   "description": "use console.log like jetbrains",
   "version": "0.1.0",
