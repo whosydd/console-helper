@@ -23,16 +23,13 @@ export const refactorHandler = async (
   edit.insert(position.with(editor.selection.start), snippet)
 
   // 移动光标
-  if (item.label === 'var!' || item.label === 'const!' || item.label === 'let!') {
-    console.log(snippet.length)
-    console.log(posStart)
-    console.log(item.label)
-
+  const label = item.label
+  if (label === 'var!' || label === 'const!' || label === 'let!') {
     await vscode.commands.executeCommand('cursorHome')
     await vscode.commands.executeCommand('cursorMove', {
       to: 'right',
       by: 'character',
-      value: item.label === 'const!' ? posStart + 6 : posStart + 4,
+      value: label === 'const!' ? 6 : 4,
     })
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "console-helper",
   "displayName": "Console Helper",
-  "description": "",
+  "description": "use console.log like jetbrains",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.71.0"
@@ -14,6 +14,11 @@
     "email": "dev.youngkwok718@gmail.com"
   },
   "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "url": "https://github.com/whosydd/console-helper.git"
+  },
+  "publisher": "whosydd",
   "activationEvents": [
     "onLanguage:html",
     "onLanguage:javascript",
@@ -24,7 +29,22 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": []
+    "commands": [],
+    "configuration": [
+      {
+        "title": "prefix",
+        "properties": {
+          "console-helper.prefix": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": "",
+            "description": "set prefix for variable"
+          }
+        }
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",

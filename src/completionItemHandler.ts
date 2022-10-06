@@ -1,12 +1,15 @@
 import * as vscode from 'vscode'
 import { snippets } from './snippet'
 
-export const provideCompletionItems = (
+export const provideCompletionItems = async (
   document: vscode.TextDocument,
   position: vscode.Position,
   token: vscode.CancellationToken,
   ctx: vscode.CompletionContext
 ) => {
+  // 获取配置项
+  const pf = await vscode.workspace.getConfiguration('console-helper').get('prefix')
+
   // 获取需要操作的字符串
   const line = document.lineAt(position)
   const lineSlice = line.text.substring(0, position.character).split('.')
@@ -51,22 +54,33 @@ export const provideCompletionItems = (
       const varReg = /\{['`"]|\(['`"]/
       const arrReg = /\[.*\]/
 
-      const snp = newLineText.split(',').map(t => {
+      let snp = newLineText.split(',').map(t => {
         let text = t.trim()
         // 转换数组格式
         if (text.match(arrReg)) {
           return text.replace(/%%/g, ',')
         }
 
+        const label = item.label
+        if (label === 'var!' || label === 'const!' || label === 'let!') {
+          return text
+        }
+
         if (text.match(varReg) || !text.match(strReg)) {
-          // TODO: 可以设置前缀
-          text = `"${text}:",${text}`
+          if (pf === null) {
+            text = text
+          } else if (pf === '') {
+            text = `"${text}:",${text}`
+          } else {
+            text = `"${pf}",${text}`
+          }
         }
         return text
       })
 
       // // 判断代码片段类型
-      if (item.label === 'var!' || item.label === 'const!' || item.label === 'let!') {
+      const label = item.label
+      if (label === 'var!' || label === 'const!' || label === 'let!') {
         item.detail = `${snippet.body}${snp}`
       } else {
         item.detail = `${snippet.body}(${snp})`
