@@ -1,5 +1,0 @@
-{
-  "prefix": "utf-8",
-  "body": ["console.log(${1})"],
-  "description": "设置浏览器响应内容编码为utf-8"
-}

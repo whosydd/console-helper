@@ -1,23 +1,54 @@
 {
   "name": "console-helper",
   "displayName": "Console Helper",
-  "description": "",
-  "version": "0.0.1",
+  "description": "use console.log like jetbrains",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.71.0"
   },
   "categories": [
-    "Other"
+    "Snippets"
   ],
+  "author": {
+    "name": "GY",
+    "email": "dev.youngkwok718@gmail.com"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "url": "https://github.com/whosydd/console-helper.git"
+  },
+  "publisher": "whosydd",
   "activationEvents": [
+    "onLanguage:html",
     "onLanguage:javascript",
-    "onLanguage:typescript"
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:vue"
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": []
+    "commands": [],
+    "configuration": [
+      {
+        "title": "prefix",
+        "properties": {
+          "console-helper.prefix": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": "",
+            "description": "set prefix for variable"
+          }
+        }
+      }
+    ]
   },
   "scripts": {
+    "vsce:package": "pnpm vsce package --no-dependencies",
+    "vsce:publish": "pnpm vsce publish --no-dependencies",
     "vscode:prepublish": "pnpm run package",
     "compile": "webpack",
     "watch": "webpack --watch",
