@@ -2,7 +2,7 @@
   "name": "console-helper-vscode",
   "displayName": "Console Helper",
   "description": "use console.log like jetbrains",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.71.0"
   },
