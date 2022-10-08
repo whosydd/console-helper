@@ -32,4 +32,13 @@ export const refactorHandler = async (
       value: label === 'const!' ? 6 : 4,
     })
   }
+
+  if (label === 'if!') {
+    await vscode.commands.executeCommand('cursorHome')
+    await vscode.commands.executeCommand('cursorMove', {
+      to: 'right',
+      by: 'character',
+      value: snippet.length - 1,
+    })
+  }
 }

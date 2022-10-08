@@ -62,7 +62,7 @@ export const provideCompletionItems = async (
         }
 
         const label = item.label
-        if (label === 'var!' || label === 'const!' || label === 'let!') {
+        if (label === 'var!' || label === 'const!' || label === 'let!' || label === 'if!') {
           return text
         }
 
@@ -80,7 +80,10 @@ export const provideCompletionItems = async (
 
       // // 判断代码片段类型
       const label = item.label
-      if (label === 'var!' || label === 'const!' || label === 'let!') {
+
+      if (label === 'if!') {
+        item.detail = `${snippet.body[0]}${snp}${snippet.body[1]}`
+      } else if (label === 'var!' || label === 'const!' || label === 'let!') {
         item.detail = `${snippet.body}${snp}`
       } else {
         item.detail = `${snippet.body}(${snp})`

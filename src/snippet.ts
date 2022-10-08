@@ -52,4 +52,10 @@ const letDefine = {
   description: 'define variable',
 }
 
-export const snippets = [log, warn, err, info, debug, varDefine, constDefine, letDefine]
+const ifDefine = {
+  prefix: 'if!',
+  body: [`if (`, `) {}`],
+  description: 'define variable',
+}
+
+export const snippets = [log, warn, err, info, debug, varDefine, constDefine, letDefine, ifDefine]
